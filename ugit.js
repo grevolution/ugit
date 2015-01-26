@@ -14,16 +14,10 @@ var inquirer = require("inquirer");
 var exec = require("child_process").exec;
 
 function find_and_commit(keyword) {
-  console.log('the keyword is :'.concat(keyword))
   exec('ruby $NODE_PATH/ugit/upload.rb'.concat(" ").concat(keyword), print_tickets_to_select);
 }
 
 function print_tickets_to_select(err, stdout, stderr){
-
-    console.log(err)
-    console.log(stdout)
-    console.log(stderr)
-
     inquirer.prompt([
       {
         type: "list",
