@@ -15,7 +15,8 @@ var exec = require("child_process").exec;
 var json = '';
 
 function findAndCommit(keyword) {
-  exec('ruby $NODE_PATH/ugit/unfuddler/upload.rb'.concat(" ").concat(keyword), printTicketsToSelect);
+  // exec('ruby $NODE_PATH/ugit/unfuddler/upload.rb'.concat(" ").concat(keyword), printTicketsToSelect);
+  exec('ruby unfuddler/upload.rb'.concat(" ").concat(keyword), printTicketsToSelect);
 }
 
 function printTicketsToSelect(err, stdout, stderr){
@@ -53,13 +54,23 @@ function printTicketsToSelect(err, stdout, stderr){
       });
 }
 
+var cMessage = ""
 function checkFixedAndTime(obj, msg) {
   var resolved = false;
   if(msg.toLowerCase().indexOf("fixed") > -1) {
     //the string contains the word fixed.
     var ticketId = getTicketId(obj)
     var projectId = obj.project_id
-    exec('ruby unfuddler/upload.rb -u '.concat(projectId+" ").concat(ticketId+" ").concat("1"), showError);
+
+    exec('git rev-parse --verify HEAD', function(err, stdout, stderr){
+      cMessage = stdout
+    });
+
+    if(cMessage && cMessage.trim().length > 0) {
+      exec('ruby unfuddler/upload.rb -u '.concat(projectId+" ").concat(ticketId+" ").concat("1"), showError);      
+    } else {
+      exec('ruby unfuddler/upload.rb -u '.concat(projectId+" ").concat(ticketId+" ").concat("1"+" ").concat(cMessage), showError);
+    }
     resolved = true
   }
 
