@@ -25,14 +25,14 @@ require 'terminal-table'
 
 UNFUDDLE_SETTINGS = {
   #-----------------------------
-  :subdomain  => 'tigerspike',
-  :username   => 'shan',
-  :password   => 'Socket_Plug.1',
+  :subdomain  => ENV['UNFUDDLE_DOMAIN'],
+  :username   => ENV['UNFUDDLE_USERNAME'],
+  :password   => ENV['UNFUDDLE_PASSWORD'],
   #-----------------------------  
   :ssl        => true,
 
   # you can set the project_id here and then you do not have to pass it from command line.
-  :project_id => '298',
+  :project_id => ENV['UNFUDDLE_PROJECT'],
 
   #set the below values for creating your tickets. If you have mentioned these properties in your
   # csv file, then those values will take precedence over the values defined here.

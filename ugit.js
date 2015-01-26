@@ -6,7 +6,7 @@
  * Code licensed under the MIT License:
  * https://github.com/grevolution/ugit/blob/master/LICENSE.md
  *
- * @author Shan Ul Haq <g@grevolution.me>
+ * @author Shan Ul Haq <eduardo.lundgren@gmail.com>
  */
 
 'use strict';
@@ -14,7 +14,7 @@ var inquirer = require("inquirer");
 
 function find_and_commit(keyword) {
   var exec = require("child_process").exec;
-  exec('ruby upload.rb'.concat(" ").concat(keyword, print_tickets_to_select)
+  exec('ruby upload.rb'.concat(" ").concat(keyword), print_tickets_to_select);
 }
 
 function print_tickets_to_select(err, stdout, stderr){
@@ -41,4 +41,4 @@ function git_commit_callback(err, stdout, stderr){
   console.log(stderr)  
 }
 
-find_and_commit(process.argv[1])
+find_and_commit(process.argv[2])
