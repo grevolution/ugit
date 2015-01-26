@@ -15,7 +15,7 @@ var exec = require("child_process").exec;
 var json = '';
 
 function findAndCommit(keyword) {
-  exec('ruby $NODE_PATH/ugit/unfuddler/upload.rb'.concat(" ").concat(keyword), print_tickets_to_select);
+  exec('ruby $NODE_PATH/ugit/unfuddler/upload.rb'.concat(" ").concat(keyword), printTicketsToSelect);
 }
 
 function printTicketsToSelect(err, stdout, stderr){
