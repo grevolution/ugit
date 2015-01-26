@@ -1,7 +1,15 @@
-/**
- * Unfuddle Ticket Search and Commit
+#!/usr/bin/env node
+
+/*
+ * Copyright 2015, All Rights Reserved.
+ *
+ * Code licensed under the MIT License:
+ * https://github.com/grevolution/ugit/blob/master/LICENSE.md
+ *
+ * @author Shan Ul Haq <g@grevolution.me>
  */
 
+'use strict';
 var inquirer = require("inquirer");
 
 function find_and_commit(keyword) {
