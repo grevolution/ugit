@@ -32,7 +32,8 @@ function print_tickets_to_select(err, stdout, stderr){
       }
     ], function( answers ) {
         var commit_message = answers.ticket.concat(" - ").concat(answers.message)
-        exec('git commit -am '.concat(commit_message), git_commit_callback)
+        console.log(commit_message)
+        exec('git commit -am \"'.concat(commit_message).concat("\""), git_commit_callback)
       });
 }
 
