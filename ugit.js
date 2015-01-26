@@ -15,8 +15,7 @@ var exec = require("child_process").exec;
 var json = '';
 
 function findAndCommit(keyword) {
-  // exec('ruby $NODE_PATH/ugit/unfuddler/upload.rb'.concat(" ").concat(keyword), printTicketsToSelect);
-  exec('ruby unfuddler/upload.rb'.concat(" ").concat(keyword), printTicketsToSelect);
+  exec('ruby $NODE_PATH/ugit/unfuddler/upload.rb'.concat(" ").concat(keyword), printTicketsToSelect);
 }
 
 function printTicketsToSelect(err, stdout, stderr){
@@ -64,13 +63,12 @@ function checkFixedAndTime(obj, msg) {
 
     exec('git rev-parse --verify HEAD', function(err, stdout, stderr){
       cMessage = stdout
+      if(cMessage && cMessage.trim().length > 0) {
+        exec('ruby unfuddler/upload.rb -u '.concat(projectId+" ").concat(ticketId+" ").concat("1"+" ").concat(cMessage), showError);      
+      } else {
+        exec('ruby unfuddler/upload.rb -u '.concat(projectId+" ").concat(ticketId+" ").concat("1"+" "), showError);
+      }
     });
-
-    if(cMessage && cMessage.trim().length > 0) {
-      exec('ruby unfuddler/upload.rb -u '.concat(projectId+" ").concat(ticketId+" ").concat("1"), showError);      
-    } else {
-      exec('ruby unfuddler/upload.rb -u '.concat(projectId+" ").concat(ticketId+" ").concat("1"+" ").concat(cMessage), showError);
-    }
     resolved = true
   }
 
