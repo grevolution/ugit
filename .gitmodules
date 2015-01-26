@@ -1,0 +1,3 @@
+[submodule "unfuddler"]
+	path = unfuddler
+	url = git@github.com:grevolution/unfuddler.git
