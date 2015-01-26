@@ -1,6 +1,6 @@
 {
   "name": "ugit",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "A utility to search unfuddle tickets and put them in your commit messages",
   "main": "ugit.js",
   "scripts": {
@@ -12,7 +12,7 @@
   },
   "bin": {
     "ugit": "ugit.js"
-  },  
+  },
   "keywords": [
     "git",
     "commit",
