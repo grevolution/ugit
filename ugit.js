@@ -15,10 +15,20 @@ var exec = require("child_process").exec;
 var json = '';
 
 function findAndCommit(keyword) {
+  if(!process.env.UGIT_UNFUDDLE_DOMAIN || !process.env.UGIT_UNFUDDLE_USERNAME
+    || !process.env.UGIT_UNFUDDLE_PASSWORD) {
+    console.log("environment variables are not defined")
+    return
+  }
+
   exec('ruby $NODE_PATH/ugit/unfuddler/upload.rb'.concat(" ").concat(keyword), printTicketsToSelect);
 }
 
 function printTicketsToSelect(err, stdout, stderr){
+    if(err || stderr) {
+      console.log(stderr)
+      return
+    }
     json = JSON.parse(stdout)
     var summaries = []
     for(var i in json) {
@@ -41,14 +51,15 @@ function printTicketsToSelect(err, stdout, stderr){
     ], function( answers ) {
         var commit_message = answers.ticket.concat(" - ").concat(answers.message)
         exec('git commit -am \"'.concat(commit_message).concat("\""), showAll)
-
-        //if the message contains the word `fixed` in it. mark the ticket as resolved
-        //if the ticket contains the word `spent` in it. see the next 
-        for(var i in json) {
-          var t = json[i]
-          if(t.title.valueOf() == answers.ticket.valueOf()) {
-            checkFixedAndTime(t, answers.message)
-          }
+        if(process.env.UGIT_POWERFULL_COMMIT == "true") {
+          //if the message contains the word `fixed` in it. mark the ticket as resolved
+          //if the ticket contains the word `spent` in it. see the next 
+          for(var i in json) {
+            var t = json[i]
+            if(t.title.valueOf() == answers.ticket.valueOf()) {
+              checkFixedAndTime(t, answers.message)
+            }
+          }          
         }
       });
 }
