@@ -30,12 +30,14 @@ function printTicketsToSelect(err, stdout, stderr){
         type: "list",
         name: "ticket",
         message: "Ticket:",
-        choices: summaries
+        choices: summaries,
+        default: function() {return "Ticket completed"}
       },
       {
         type: "input",
         name: "message",
-        message: "Your message?"
+        message: "Your message?",
+        default: function() {return "Implementation Done"}
       }
     ], function( answers ) {
         var commit_message = answers.ticket.concat(" - ").concat(answers.message)
