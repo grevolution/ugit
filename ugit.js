@@ -14,7 +14,7 @@ var inquirer = require("inquirer");
 
 function find_and_commit(keyword) {
   var exec = require("child_process").exec;
-  exec('ruby upload.rb'.concat(" ").concat(keyword, print_tickets_to_select);
+  exec('ruby upload.rb'.concat(" ").concat(keyword, print_tickets_to_select)
 }
 
 function print_tickets_to_select(err, stdout, stderr){
