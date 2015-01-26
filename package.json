@@ -1,6 +1,6 @@
 {
   "name": "ugit",
-  "version": "0.0.13",
+  "version": "0.0.14",
   "description": "A utility to search unfuddle tickets and put them in your commit messages",
   "main": "ugit.js",
   "scripts": {
