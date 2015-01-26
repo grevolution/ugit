@@ -31,7 +31,6 @@ function printTicketsToSelect(err, stdout, stderr){
         name: "ticket",
         message: "Ticket:",
         choices: summaries,
-        default: function() {return "Ticket completed"}
       },
       {
         type: "input",
