@@ -1,0 +1,30 @@
+{
+  "name": "ugit",
+  "version": "0.0.2",
+  "description": "A utility to search unfuddle tickets and put them in your commit messages",
+  "main": "ugit.js",
+  "scripts": {
+    "test": "ugit commit <your keyword>"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/grevolution/ugit"
+  },
+  "bin": {
+    "ugit": "ugit.js"
+  },  
+  "keywords": [
+    "git",
+    "commit",
+    "unfuddle"
+  ],
+  "author": "Shan Ul Haq <g@grevolution.me> (http://grevolution.me)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/grevolution/ugit/issues"
+  },
+  "homepage": "https://github.com/grevolution/ugit",
+  "dependencies": {
+    "inquirer": "^0.8.0"
+  }
+}
