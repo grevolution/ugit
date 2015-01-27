@@ -75,9 +75,9 @@ function checkFixedAndTime(obj, msg) {
     exec('git rev-parse --verify HEAD', function(err, stdout, stderr){
       cMessage = stdout
       if(cMessage && cMessage.trim().length > 0) {
-        exec('ruby unfuddler/upload.rb -u '.concat(projectId+" ").concat(ticketId+" ").concat("1"+" ").concat(cMessage), showError);      
+        exec('ruby $NODE_PATH/ugit/unfuddler/upload.rb -u '.concat(projectId+" ").concat(ticketId+" ").concat("1"+" ").concat(cMessage), showError);      
       } else {
-        exec('ruby unfuddler/upload.rb -u '.concat(projectId+" ").concat(ticketId+" ").concat("1"+" "), showError);
+        exec('ruby $NODE_PATH/ugit/unfuddler/upload.rb -u '.concat(projectId+" ").concat(ticketId+" ").concat("1"+" "), showError);
       }
     });
     resolved = true
@@ -96,9 +96,9 @@ function checkFixedAndTime(obj, msg) {
           var ticketId = getTicketId(obj)
           var projectId = obj.project_id
           if(!resolved){
-            exec('ruby unfuddler/upload.rb -u '.concat(projectId+" ").concat(ticketId+" ").concat("0"), showError);            
+            exec('ruby $NODE_PATH/ugit/unfuddler/upload.rb -u '.concat(projectId+" ").concat(ticketId+" ").concat("0"), showError);            
           }
-          exec('ruby unfuddler/upload.rb -a '.concat(projectId+" ").concat(ticketId+" ").concat(""+timeSpent), showError);
+          exec('ruby $NODE_PATH/ugit/unfuddler/upload.rb -a '.concat(projectId+" ").concat(ticketId+" ").concat(""+timeSpent), showError);
       }
     }
   }

@@ -7,6 +7,12 @@ a utility to search through unfuddle tickets and put the summary in commit messa
 - Ruby (2.0+)
 - Node.js (0.10+)
 
+*you'll have to install `terminal-table` ruby gem if you have not installed already.
+
+```
+(sudo) gem install terminal-table
+```
+
 # How to install
 
 `npm install -g ugit`
