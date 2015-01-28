@@ -32,7 +32,11 @@ function printTicketsToSelect(err, stdout, stderr){
     json = JSON.parse(stdout)
     var summaries = []
     for(var i in json) {
-      summaries.push(json[i].title)
+      if(json[i].title.length > 60) {
+        summaries.push(json[i].title.substring(0,60)+"...")        
+      } else {
+        summaries.push(json[i].title)
+      }
     }
 
     inquirer.prompt([
@@ -56,7 +60,7 @@ function printTicketsToSelect(err, stdout, stderr){
           //if the ticket contains the word `spent` in it. see the next 
           for(var i in json) {
             var t = json[i]
-            if(t.title.valueOf() == answers.ticket.valueOf()) {
+            if(t.title.valueOf().indexOf(answers.ticket.valueOf()) > -1 ) {
               checkFixedAndTime(t, answers.message)
             }
           }          
