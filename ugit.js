@@ -32,8 +32,8 @@ function printTicketsToSelect(err, stdout, stderr){
     json = JSON.parse(stdout)
     var summaries = []
     for(var i in json) {
-      if(json[i].title.length > 60) {
-        summaries.push(json[i].title.substring(0,60)+"...")        
+      if(json[i].title.length > 70) {
+        summaries.push(json[i].title.substring(0,70)+"...")        
       } else {
         summaries.push(json[i].title)
       }
