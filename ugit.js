@@ -90,6 +90,7 @@ function checkFixedAndTime(obj, msg) {
   var spIndex = msg.toLowerCase().indexOf("spent")
   if(spIndex > -1){
     var str1 = msg.substring(spIndex + "spent".length)
+    var timeEntryMessage = msg.substring(0, spIndex);
     var hIndex = str1.toLowerCase().indexOf("h");
     if(hIndex > -1){
       var time1 = str1.substring(0, hIndex);
@@ -102,7 +103,11 @@ function checkFixedAndTime(obj, msg) {
           if(!resolved){
             exec('ruby '.concat(process.env.NODE_PATH).concat('/ugit/unfuddler/upload.rb -u ').concat(projectId+" ").concat(ticketId+" ").concat("0"), showError);            
           }
-          exec('ruby '.concat(process.env.NODE_PATH).concat('/ugit/unfuddler/upload.rb -a ').concat(projectId+" ").concat(ticketId+" ").concat(""+timeSpent), showError);
+          if(timeEntryMessage.trim().length > 0) {
+            exec('ruby '.concat(process.env.NODE_PATH).concat('/ugit/unfuddler/upload.rb -a ').concat(projectId+" ").concat(ticketId+" ").concat(""+timeSpent).concat(" "+ timeEntryMessage), showError);
+          } else {
+            exec('ruby '.concat(process.env.NODE_PATH).concat('/ugit/unfuddler/upload.rb -a ').concat(projectId+" ").concat(ticketId+" ").concat(""+timeSpent), showError);            
+          }
       }
     }
   }
