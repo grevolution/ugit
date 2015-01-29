@@ -21,7 +21,7 @@ function findAndCommit(keyword) {
     return
   }
 
-  exec('ruby '.concat(process.env.NODE_PATH).concat('/ugit/unfuddler/upload.rb').concat(" ").concat(keyword), printTicketsToSelect);
+  exec('ruby '.concat(process.env.NODE_PATH).concat('/ugit/unfuddler/upload.rb').concat(" ").concat("\""+keyword+"\""), printTicketsToSelect);
 }
 
 function printTicketsToSelect(err, stdout, stderr){
@@ -104,7 +104,7 @@ function checkFixedAndTime(obj, msg) {
             exec('ruby '.concat(process.env.NODE_PATH).concat('/ugit/unfuddler/upload.rb -u ').concat(projectId+" ").concat(ticketId+" ").concat("0"), showError);            
           }
           if(timeEntryMessage.trim().length > 0) {
-            exec('ruby '.concat(process.env.NODE_PATH).concat('/ugit/unfuddler/upload.rb -a ').concat(projectId+" ").concat(ticketId+" ").concat(""+timeSpent).concat(" "+ timeEntryMessage), showError);
+            exec('ruby '.concat(process.env.NODE_PATH).concat('/ugit/unfuddler/upload.rb -a ').concat(projectId+" ").concat(ticketId+" ").concat(""+timeSpent).concat(" \""+ timeEntryMessage+"\""), showError);
           } else {
             exec('ruby '.concat(process.env.NODE_PATH).concat('/ugit/unfuddler/upload.rb -a ').concat(projectId+" ").concat(ticketId+" ").concat(""+timeSpent), showError);            
           }
