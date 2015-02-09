@@ -87,10 +87,10 @@ function checkFixedAndTime(obj, msg) {
     resolved = true
   }
 
-  var spIndex = msg.toLowerCase().indexOf("spent")
+  var spIndex = msg.toLowerCase().indexOf("spen")
   if(spIndex > -1){
-    var str1 = msg.substring(spIndex + "spent".length)
-    var timeEntryMessage = msg.substring(0, spIndex);
+    var str1 = msg.substring(spIndex + "spen".length + 1)
+    var timeEntryMessage = msg.substring(0, spIndex + 1);
     var hIndex = str1.toLowerCase().indexOf("h");
     if(hIndex > -1){
       var time1 = str1.substring(0, hIndex);
