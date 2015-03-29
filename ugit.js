@@ -54,7 +54,7 @@ function printTicketsToSelect(err, stdout, stderr){
       }
     ], function( answers ) {
         var commit_message = answers.ticket.concat(" - ").concat(answers.message)
-        exec('git commit -am \"'.concat(commit_message).concat("\""), showAll)
+        exec('git commit -m \"'.concat(commit_message).concat("\""), showAll)
         if(process.env.UGIT_POWERFULL_COMMIT == "true") {
           //if the message contains the word `fixed` in it. mark the ticket as resolved
           //if the ticket contains the word `spent` in it. see the next 
